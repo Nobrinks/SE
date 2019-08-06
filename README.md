@@ -1,4 +1,4 @@
 # Software Embarcado
 
-###### Paulo Victor
+## Repositório da disciplina de Tópicos Especiais
 
