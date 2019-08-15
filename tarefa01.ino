@@ -2,7 +2,7 @@
 #define BUT_PIN 12
 #define BUT2_PIN 8
 byte status=0;
-long int tInicial=0, tFinal, intervalo=1000, tempo;
+long int tInicial=0, tFinal, intervalo=1000, tempo, but_ac=0, but_dc=0;
 boolean on_off=true;
 void setup() {
   // put your setup code here, to run once:
@@ -21,6 +21,7 @@ void frequencia(){
     digitalWrite(LED_PIN, LOW);
   }
 }
+
 void pisca(){
   tempo=millis();
   if(on_off==true){
@@ -34,6 +35,7 @@ void pisca(){
      }
   }
 }
+
 void loop() {
   // put your main code here, to run repeatedly:
   pisca();
@@ -43,15 +45,26 @@ void loop() {
     status=0;
     while(1);
   }
-  if(digitalRead(BUT_PIN)==LOW){
+  if(but_ac){
+    if(digitalRead(BUT_PIN)){
+      but_ac=0;
+    }
+  }
+  else if(digitalRead(BUT_PIN)==LOW){
+    but_ac=1;
     status=1;
     frequencia(); 
-    while(digitalRead(BUT_PIN)==LOW){pisca(); status=0;}  
   }
-  if(digitalRead(BUT2_PIN)==LOW){
+  
+  if(but_dc){
+    if(digitalRead(BUT2_PIN)){
+      but_dc=0;
+    }
+  }
+  else if(digitalRead(BUT2_PIN)==LOW){
+    but_dc=1;
     status=2;
     frequencia(); 
-    while(digitalRead(BUT2_PIN)==LOW){pisca(); status=0;}
   }
    
 }
