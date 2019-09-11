@@ -1,6 +1,3 @@
-#define BUT_DC 11
-#define BUT_AC 10
-#define LED_OUT 7
 #define UM_AC 1<<2
 #define UM_DC 1<<3
 int fim, inicio=0, intervalo=1000,butPressac=0, butPressdc=0, tempiEst=0, tempfEst=0, but_ac=0, but_dc=0, estado=1;
